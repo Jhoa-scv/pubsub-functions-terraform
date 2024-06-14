@@ -1,0 +1,37 @@
+# Terraform PubSub y Cloud function
+  
+## Local Setup
+
+tienes que tener instalado 
+
+- terraform version 1.3.0
+- python 3
+- gcloud
+
+
+## Google Setup
+
+- `gcloud init` Inicializa tu conexion de google cloud, debes tener los datos del ambiente de GCP al que te quieres conetar
+- `gcloud beta auth application-default login` Autoriza el acceso de tu maquina local al ambiente al que quieres acceder esto te va a generar un file, el path de ese file lo tienes que reemplazar en el archivo de terraform.tf
+
+### Terraform Setup
+```
+provider "google" {
+  project     =  "<id proyecto>"
+  region      = "us-central1"
+  credentials = "<reemplaza con el file generado>"
+}
+
+provider "google-beta" {
+  project     =  "<id proyecto>"
+  region      = "us-central1"
+  credentials = "<reemplaza con el file generado>"
+}
+```
+
+## Terraform commands
+
+- `terraform init` Para incializar tu proyecto
+- `terraform plan` Para validar los cambios que se aplicaran
+- `terraform apply` Para aplicar los cambios
+- `terraform destroy` Para destruir los modulos
